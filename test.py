@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
-import piece
+import piececom
 
 driver = webdriver.Firefox()
 driver.get("https://www.chess.com/analysis")
@@ -21,4 +21,4 @@ for test in all_pieces_raw:
 
 
 for test in all_pieces_classes:
-    all_pieces.append(piece.Piece(test))
+    all_pieces.append(piececom.Piece(test))

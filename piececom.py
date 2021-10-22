@@ -1,4 +1,4 @@
-class Piece:
+class PieceCom:
     def __init__(self, piece):
         self.piece = piece
         self.GetPieceInfo()
