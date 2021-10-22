@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 import piececom
+import boardcom
+import chess
 
 driver = webdriver.Firefox()
 driver.get("https://www.chess.com/analysis")
@@ -21,4 +23,7 @@ for test in all_pieces_raw:
 
 
 for test in all_pieces_classes:
-    all_pieces.append(piececom.Piece(test))
+    all_pieces.append(piececom.PieceCom(test))
+
+newBoard = boardcom.Boardcom(all_pieces)
+print(newBoard.board)
