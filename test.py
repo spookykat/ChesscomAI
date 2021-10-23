@@ -1,7 +1,6 @@
-import boardcom
 import browser
+import pygamedraw
 
 driver = browser.Driver()
 
-newBoard = boardcom.Boardcom(driver.all_pieces)
-print(newBoard.board)
+pygamedraw.DrawBoard(driver)

@@ -18,9 +18,14 @@ class Driver:
         self.all_pieces = []
 
         for test in all_pieces_raw:
-            class_name = str(test.get_attribute("class"))
-            if class_name.startswith("piece"):
-                all_pieces_classes.append(class_name)
+            try:
+                class_name = str(test.get_attribute("class"))
+                if class_name.startswith("piece"):
+                    all_pieces_classes.append(class_name)
+            except:
+                continue
+            
+            
         
         for test in all_pieces_classes:
             self.all_pieces.append(piececom.PieceCom(test))
