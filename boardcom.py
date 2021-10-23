@@ -9,7 +9,7 @@ class Boardcom:
             self.pieceToBoard(piece)
     
 
-    def pieceToBoard(self, piececom):
-        square = chess.parse_square(piececom.position)
-        piece = chess.Piece(piececom.pieceType, piececom.color)
+    def pieceToBoard(self, compiece):
+        square = chess.parse_square(compiece.position)
+        piece = chess.Piece(compiece.pieceType, compiece.color)
         self.board.set_piece_at(square, piece)
