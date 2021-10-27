@@ -1,14 +1,14 @@
 import pygame
 import boardcom
 import time
+import os
 
 class DrawBoard:
     def __init__(self, driver):
         pygame.init()
         self.screen = pygame.display.set_mode([560, 560])
         self.driver = driver
-        self.board = boardcom.Boardcom()
-        
+        self.board = boardcom.Boardcom() 
 
         running = True
         while running:
@@ -19,7 +19,6 @@ class DrawBoard:
                     running = False
             self.drawBoard()
             pygame.display.flip()
-            time.sleep(0.5)
         pygame.quit()
 
     def drawBoard(self):
@@ -47,31 +46,31 @@ class DrawBoard:
             if str(board.piece_at(i)).isupper():
                 piece = str(board.piece_at(i)).lower()
                 if piece == "p":
-                    image = pygame.image.load("pieces/white_pawn.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "white_pawn.png"))
                 elif piece == "n":
-                    image = pygame.image.load("pieces/white_knight.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "white_knight.png"))
                 elif piece == "b":
-                    image = pygame.image.load("pieces/white_bishop.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "white_bishop.png"))
                 elif piece == "r":
-                    image = pygame.image.load("pieces/white_rook.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "white_rook.png"))
                 elif piece == "q":
-                    image = pygame.image.load("pieces/white_queen.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "white_queen.png"))
                 elif piece == "k":
-                    image = pygame.image.load("pieces/white_king.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "white_king.png"))
                 else: continue
             else:
                 piece = str(board.piece_at(i)).lower()
                 if piece == "p":
-                    image = pygame.image.load("pieces/black_pawn.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "black_pawn.png"))
                 elif piece == "n":
-                    image = pygame.image.load("pieces/black_knight.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "black_knight.png"))
                 elif piece == "b":
-                    image = pygame.image.load("pieces/black_bishop.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "black_bishop.png"))
                 elif piece == "r":
-                    image = pygame.image.load("pieces/black_rook.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "black_rook.png"))
                 elif piece == "q":
-                    image = pygame.image.load("pieces/black_queen.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "black_queen.png"))
                 elif piece == "k":
-                    image = pygame.image.load("pieces/black_king.png")
+                    image = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), "pieces", "black_king.png"))
                 else: continue
             self.screen.blit(pygame.transform.scale(image, (70,70)),((7-list[i][1])*70, (list[i][0])*70))

@@ -2,9 +2,11 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 import piececom
+import os
 class Driver:
     def __init__(self):
-        self.driver = webdriver.Firefox()
+        #change this to browser you are using
+        self.driver = webdriver.Chrome(os.path.join(os.path.dirname(os.path.realpath(__file__)),"chromedriver.exe"))
         self.driver.get("https://www.chess.com/analysis")
 
         time.sleep(5)
