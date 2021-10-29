@@ -13,16 +13,22 @@ class Ai:
             cnt += 1
             if self.board.piece_at(square) != None:
                 piece = self.board.piece_at(square)
-          
+                worth = 0
+
+                if piece.piece_type == 1 : #Pawn
+                    worth = 1
+                elif piece.piece_type == 2 or piece.piece_type == 3 : #Bishop or knight
+                    worth = 3
+                elif piece.piece_type == 4: #Rook
+                    worth = 5
+                elif piece.piece_type == 5: #Queen
+                    worth = 9
+
+
                 if self.board.turn == piece.color:
-                    if piece.piece_type == 1 : #Pawn
-                        evaluation += 1
-                    elif piece.piece_type == 2 or piece.piece_type == 3 : #Bishop or knight
-                        evaluation += 3
-                    elif piece.piece_type == 4: #Rook
-                        evaluation += 5
-                    elif piece.piece_type == 5: #Queen
-                        evaluation += 9
+                    evaluation += worth
+                else:
+                    evaluation -= worth
 
         return evaluation
 
