@@ -37,7 +37,7 @@ class Ai:
 
         return evaluation
 
-    def minimax(self, depth, player, board):
+    def minimax(self, depth, player, board, alpha, beta):
         board.turn = player
         children = list(board.legal_moves)
         best_move = None
@@ -49,10 +49,13 @@ class Ai:
                 print(child)
                 board_copy = copy.deepcopy(board)
                 board_copy.push(child)
-                current_eval = self.minimax(depth - 1, False, board_copy)[1]
+                current_eval = self.minimax(depth - 1, False, board_copy,alpha,beta)[1]
                 if current_eval > max_eval:
                     max_eval = current_eval
                     best_move = child
+                alpha = max(alpha, current_eval)
+                if beta <= alpha:
+                    break
             return best_move, max_eval
         
         else:
@@ -61,9 +64,12 @@ class Ai:
                 print(child)
                 board_copy = copy.deepcopy(board)
                 board_copy.push(child)
-                current_eval = self.minimax(depth - 1, True, board_copy)[1]
+                current_eval = self.minimax(depth - 1, True, board_copy,alpha,beta)[1]
                 if current_eval < min_eval:
                     min_eval = current_eval
                     best_move = child
+                beta = min(beta, current_eval)
+                if beta <= alpha:
+                    break
             return best_move, min_eval
         
