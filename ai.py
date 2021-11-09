@@ -11,22 +11,21 @@ class Ai:
 
     def EvaluateScore(self, board):
         evaluation = 0
-        cnt=0
+
+        
         for square in chess.SQUARES:
-            cnt += 1
             if board.piece_at(square) != None:
                 piece = board.piece_at(square)
-                worth = 0
 
+                #Material
+                worth = 0              
                 if piece.piece_type == 1 : #Pawn
-                    worth = 1
+                    worth = 100
                 elif piece.piece_type == 2 or piece.piece_type == 3 : #Bishop or knight
-                    worth = 3
+                    worth = 300
                 elif piece.piece_type == 4: #Rook
-                    worth = 5
+                    worth = 500
                 elif piece.piece_type == 5: #Queen
-                    worth = 9
-                elif piece.piece_type == 6: #King
                     worth = 900
 
 
@@ -34,6 +33,8 @@ class Ai:
                     evaluation += worth
                 else:
                     evaluation -= worth
+                
+
 
         return evaluation
 
