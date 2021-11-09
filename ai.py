@@ -30,7 +30,7 @@ class Ai:
                     worth = 900
 
 
-                if board.turn == piece.color:
+                if piece.color:
                     evaluation += worth
                 else:
                     evaluation -= worth
