@@ -1,6 +1,7 @@
 import chess
 import copy
 import math
+from piecesquaretables import pawn_white_table
 
 class Ai:
     def __init__(self):
@@ -21,6 +22,7 @@ class Ai:
                 worth = 0              
                 if piece.piece_type == 1 : #Pawn
                     worth = 100
+                    worth += pawn_white_table[square]
                 elif piece.piece_type == 2 or piece.piece_type == 3 : #Bishop or knight
                     worth = 300
                 elif piece.piece_type == 4: #Rook
