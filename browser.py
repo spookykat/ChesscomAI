@@ -6,7 +6,8 @@ import os
 class Driver:
     def __init__(self):
         #change this to browser you are using
-        self.driver = webdriver.Chrome(os.path.join(os.path.dirname(os.path.realpath(__file__)),"chromedriver.exe"))
+        #self.driver = webdriver.Chrome(os.path.join(os.path.dirname(os.path.realpath(__file__)),"chromedriver.exe"))
+        self.driver = webdriver.Firefox()
         self.driver.get("https://www.chess.com/analysis")
 
         time.sleep(5)

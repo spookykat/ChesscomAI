@@ -4,12 +4,24 @@ import time
 import os
 
 class DrawBoard:
+    def button(self, x,y,w,h,ic,ac,action=None):
+        mouse = pygame.mouse.get_pos()
+        click = pygame.mouse.get_pressed()
+        print(click)
+        if x+w > mouse[0] > x and y+h > mouse[1] > y:
+            pygame.draw.rect(self.screen, ac,(x,y,w,h))
+
+            if click[0] == 1 and action != None:
+                action()         
+        else:
+           pygame.draw.rect(self.screen, ic,(x,y,w,h))
+        smallText = pygame.font.SysFont("comicsansms",20)
     def __init__(self, driver):
         pygame.init()
         self.screen = pygame.display.set_mode([560, 560])
         self.driver = driver
         self.board = boardcom.Boardcom() 
-
+        pygame.draw.rect()
         running = True
         while running:
             for event in pygame.event.get():
@@ -17,6 +29,7 @@ class DrawBoard:
                 if event.type == pygame.QUIT:
                     running = False
             self.drawBoard()
+            self.button(20,20,50,50, (0,200,0), (0,255,0),self.drawBoard)
             pygame.display.flip()
         pygame.quit()
 
