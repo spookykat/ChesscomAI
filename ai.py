@@ -1,14 +1,11 @@
 import chess
 import copy
 import math
-from piecesquaretables import pawn_white_table
+from piecesquaretables import *
 
 class Ai:
     def __init__(self):
         pass
-
-    def GetMoves(self):
-        return self.board.legal_moves
 
     def EvaluateScore(self, board):
         evaluation = 0
@@ -17,14 +14,21 @@ class Ai:
         for square in chess.SQUARES:
             if board.piece_at(square) != None:
                 piece = board.piece_at(square)
-
+                
+                if piece.color:
+                    piece_table = piece_table_white
+                else: 
+                    piece_table = piece_table_black
                 #Material
                 worth = 0              
                 if piece.piece_type == 1 : #Pawn
                     worth = 100
-                    worth += pawn_white_table[square]
-                elif piece.piece_type == 2 or piece.piece_type == 3 : #Bishop or knight
+                    worth += piece_table[0][square]
+                elif piece.piece_type == 2 : #Knight
                     worth = 300
+                    worth += piece_table[1][square]
+                elif piece.piece_type == 3: #Bishop
+                    worth = 320
                 elif piece.piece_type == 4: #Rook
                     worth = 500
                 elif piece.piece_type == 5: #Queen
@@ -36,8 +40,6 @@ class Ai:
                 else:
                     evaluation -= worth
                 
-
-
         return evaluation
 
     def minimax(self, depth, alpha, beta, player, board):
@@ -49,7 +51,6 @@ class Ai:
         if player:
             max_eval = -math.inf
             for child in children:
-                print(child)
                 board_copy = copy.deepcopy(board)
                 board_copy.push(child)
                 current_eval = self.minimax(depth - 1, alpha, beta, False, board_copy)[1]
@@ -64,7 +65,6 @@ class Ai:
         else:
             min_eval = math.inf
             for child in children:
-                print(child)
                 board_copy = copy.deepcopy(board)
                 board_copy.push(child)
                 current_eval = self.minimax(depth - 1,alpha, beta, True, board_copy)[1]
