@@ -34,10 +34,12 @@ class Ai:
                     worth += piece_table[1][square]
                 elif piece.piece_type == 3: #Bishop
                     worth = 320
+                    worth += piece_table[2][square]
                 elif piece.piece_type == 4: #Rook
                     worth = 500
                 elif piece.piece_type == 5: #Queen
                     worth = 900
+                    worth += piece_table[4][square]
 
 
                 if piece.color:

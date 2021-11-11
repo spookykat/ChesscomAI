@@ -19,10 +19,31 @@ knight_white_table = [
     -40,-20,  0,  5,  5,  0,-20,-40,
     -50,-40,-30,-30,-30,-30,-40,-50,
 ]
+bishop_white_table = [
+    -20,-10,-10,-10,-10,-10,-10,-20,
+    -10,  0,  0,  0,  0,  0,  0,-10,
+    -10,  0,  5, 10, 10,  5,  0,-10,
+    -10,  5,  5, 10, 10,  5,  5,-10,
+    -10,  0, 10, 10, 10, 10,  0,-10,
+    -10, 10, 10, 10, 10, 10, 10,-10,
+    -10,  5,  0,  0,  0,  0,  5,-10,
+    -20,-10,-10,-10,-10,-10,-10,-20,
+]
+queen_white_table = [
+    -20,-10,-10, -5, -5,-10,-10,-20,
+    -10,  0,  0,  0,  0,  0,  0,-10,
+    -10,  0,  5,  5,  5,  5,  0,-10,
+     -5,  0,  5,  5,  5,  5,  0, -5,
+      0,  0,  5,  5,  5,  5,  0, -5,
+    -10,  5,  5,  5,  5,  5,  0,-10,
+    -10,  0,  5,  0,  0,  0,  0,-10,
+    -20,-10,-10, -5, -5,-10,-10,-20
+]
 
 pawn_black_table = pawn_white_table[::-1]
 knight_black_table = knight_white_table[::-1]
+queen_black_table = queen_white_table[::1]
+bishop_black_table = bishop_white_table[::1]
 
-
-piece_table_white = [pawn_white_table, knight_white_table]
-piece_table_black = [pawn_black_table, knight_black_table]
+piece_table_white = [pawn_white_table, knight_white_table, bishop_white_table, None, queen_white_table]
+piece_table_black = [pawn_black_table, knight_black_table, bishop_black_table, None, queen_black_table]
