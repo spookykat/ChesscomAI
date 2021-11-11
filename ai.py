@@ -3,13 +3,18 @@ import copy
 import math
 from piecesquaretables import *
 
+
 class Ai:
     def __init__(self):
         pass
 
     def EvaluateScore(self, board):
         evaluation = 0
-
+        if board.is_checkmate():
+            if board.turn:
+                evaluation += -math.inf
+            else:
+                evaluation += math.inf
         
         for square in chess.SQUARES:
             if board.piece_at(square) != None:
